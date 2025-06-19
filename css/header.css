@@ -1,0 +1,134 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    background-color: #0B1E37;
+}
+
+.header__top {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+.header__logo img {
+    height: 30px;
+}
+
+@media (max-width: 500px) {
+    .header__logo img {
+        height: 20px !important;
+    }
+
+    .header__top {
+        padding: 15px 20px;
+    }
+
+
+}
+
+@media (max-width: 375px) {
+    .header__actions svg {
+        width: 15px !important;
+        height: 15px !important;
+    }
+
+    .menu_contaner {
+
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+}
+
+.menu_contaner {
+    display: flex;
+    gap: 4px;
+    width: 28px;
+    height: 28px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.menu_contaner span {
+    height: 2px;
+    width: 100%;
+    background-color: white;
+}
+
+.shopping_cart_container {
+    position: relative;
+}
+
+.header__actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    color: white;
+}
+
+.header__actions svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    fill: currentColor;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.header__actions svg:hover {
+    opacity: 0.8;
+}
+
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60vw;
+    height: 100vh;
+    background: #12243a;
+    color: #fff;
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(.77, 0, .18, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+}
+
+.sidebar-menu.active {
+    transform: translateX(0);
+}
+
+.sidebar-menu .close-btn {
+    align-self: flex-end;
+    font-size: 2.5rem;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li,
+.sidebar-menu a {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sidebar-menu li:hover,
+.sidebar-menu a:hover {
+    color: var(--color-primary);
+}

@@ -1,0 +1,123 @@
+/* Слайдер мініатюр */
+.thumbnails-slider {
+    width: 80%;
+    max-width: 500px;
+    /* Менша максимальна ширина */
+}
+
+.swiper-wrapper {
+    align-items: center;
+}
+
+.thumbnails-slider .swiper-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 467px;
+    /* Обмежуємо максимальну висоту */
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+    object-fit: contain;
+}
+
+/* Адаптивність – ще менші мініатюри на мобілках */
+@media (max-width: 768px) {
+    .thumbnails-slider {
+        max-width: 400px;
+    }
+
+    .thumbnails-slider .swiper-slide img {
+        max-height: 367px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thumbnails-slider {
+        max-width: 300px;
+    }
+
+    .thumbnails-slider .swiper-slide img {
+        max-height: 267px;
+    }
+}
+
+/* Оформлення стрілок */
+.swiper-button-prev,
+.swiper-button-next {
+    width: 40px;
+    /* Менший розмір */
+    height: 40px;
+    background: rgba(255, 255, 255, 0.6);
+    /* Напівпрозорий білий фон */
+    border-radius: 50%;
+    /* Круглі кнопки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Колір і розмір стрілок */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 18px;
+    /* Менший розмір іконки */
+    font-weight: bold;
+    color: black;
+    /* Чорний колір */
+}
+
+/* При наведенні – збільшуємо прозорість */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.swiper-pagination-bullet-active-green {
+    background-color: var(--color-primary) !important;
+    opacity: 1 !important;
+}
+
+
+/* Головне зображення */
+.main-image {
+    width: 90%;
+    /* Адаптивна ширина */
+    max-width: 500px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Щоб уникнути зайвого простору */
+}
+
+.main-image img {
+    max-width: 100%;
+    /* Щоб не виходило за межі контейнера */
+    max-height: 375px;
+    height: auto;
+    object-fit: contain;
+    /* Зберігає пропорції без обрізання */
+    border-radius: 10px;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .main-image {
+        max-width: 400px;
+    }
+
+    .main-image img {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-image {
+        max-width: 300px;
+    }
+
+    .main-image img {
+        max-height: 250px;
+    }
+}

