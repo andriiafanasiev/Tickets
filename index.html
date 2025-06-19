@@ -137,16 +137,11 @@
     <div class="sidebar-menu" id="sidebarMenu">
         <div class="close-btn" id="closeSidebar">&times;</div>
         <ul>
-            <a href="#merch">MERCH</a>
-            <li>MUSIC</li>
-            <li>COLLECTIONS</li>
-            <li>BILLIE X NIKE</li>
-            <li>SUSTAINABILITY</li>
-            <li>TOUR</li>
-            <li>BILLIE'S KITCHEN</li>
-            <li>MORE</li>
-            <li>LOGIN</li>
-            <li>CREATE ACCOUNT</li>
+            <a href="#merch">SHOP</a>
+            <a href="#album">ALBUMS</a>
+            <a href="#tour">TOUR</a>
+            <a href="#footer-social">MORE</a>
+
         </ul>
         <script>
             document.querySelector('.menu_contaner').onclick = function () {
@@ -160,6 +155,25 @@
                 .addEventListener('click', function (e) {
                     if (e.target === this) this.classList.remove('active');
                 });
+
+            // Плавне прокручування для навігаційних посилань
+            document.querySelectorAll('#sidebarMenu a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+
+                    // Закриваємо сайдбар після кліку
+                    document.getElementById('sidebarMenu').classList.remove('active');
+                });
+            });
         </script>
     </div>
 
@@ -183,7 +197,7 @@
 
                     </div>
 
-                    <section class="tour-slider-section">
+                    <section class="tour-slider-section" id="tour">
                         <h2 class="tour-slider-title">Tour Dates</h2>
                         <div class="tour-slider">
                             <div class="tour-slide active">
@@ -519,7 +533,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-social">
+        <div id="footer-social" class="footer-social">
             <a href="https://www.facebook.com/billieeilish/"><i class="fab fa-facebook-f"></i></a>
             <a href="https://x.com/billieeilish"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.instagram.com/billieeilish/"><i class="fab fa-instagram"></i></a>
