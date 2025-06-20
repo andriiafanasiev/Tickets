@@ -4,6 +4,8 @@
     width: 100%;
     border-bottom: 1px solid #ddd;
     background-color: #0B1E37;
+    position: relative;
+    z-index: 1002;
 }
 
 .header__top {
@@ -12,6 +14,7 @@
     flex-direction: row;
     align-items: center;
     padding: 15px 40px;
+    position: relative;
 }
 
 .header__logo img {
@@ -19,9 +22,7 @@
 }
 
 @media (max-width: 500px) {
-    .header__logo img {
-        height: 20px !important;
-    }
+
 
     .header__top {
         padding: 15px 20px;
@@ -92,6 +93,7 @@
     width: 60vw;
     height: 100vh;
     background: #12243a;
+
     color: #fff;
     z-index: 9999;
     transform: translateX(-100%);
@@ -116,16 +118,17 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.5rem;
     padding: 0;
     margin: 0;
 }
 
 .sidebar-menu li,
 .sidebar-menu a {
+    font-family: var(--typeface_primary);
     font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 30px;
+    font-size: 10px;
+
     letter-spacing: 2px;
     cursor: pointer;
     transition: color 0.2s;
@@ -134,4 +137,65 @@
 .sidebar-menu li:hover,
 .sidebar-menu a:hover {
     color: var(--color-primary);
+}
+
+.logo-mobile {
+    display: none;
+}
+
+.desktop-nav {
+    display: none;
+    background-color: #0d1c32;
+    border-top: 1px solid #444;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.desktop-nav a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--typeface_primary);
+    padding: 5px 15px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav a:hover {
+    color: var(--color-primary);
+}
+
+
+@media (max-width: 992px) {
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: block;
+    }
+}
+
+@media (min-width: 993px) {
+    .header__top {
+        justify-content: center;
+    }
+
+    .header__actions {
+        position: absolute;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .menu_contaner {
+        display: none;
+    }
+
+    .desktop-nav {
+        display: flex;
+    }
 }

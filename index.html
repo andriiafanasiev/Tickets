@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/swiper.css">
 
     <!-- Libary to detect county code and flag -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
     <!-- End Libary to detect county code and flag  -->
-    <link rel="stylesheet" href="css/comments.css">
     <title>TOUR - Billie Eilish</title>
     <style>
         :root {
@@ -114,17 +115,18 @@
                 </svg>
             </div>
             <div class="header__logo">
-                <img src="assets/logo.webp" alt="">
+                <img src="assets/logo.webp" alt="Billie Eilish Logo" class="logo-desktop">
+                <img src="assets/logo-mob.webp" alt="Billie Eilish Logo" class="logo-mobile">
             </div>
             <div class="header__actions">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 576 512" class="icon icon--search umg-icon"
-                    fill="currentColor">
+                <svg id="search-trigger" xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 576 512"
+                    class="icon icon--search umg-icon" fill="currentColor">
                     <path
                         d="M416 208c0 45.9-14.9 88.3-40 122.7L486.6 441.4 509.3 464 464 509.3l-22.6-22.6L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z">
                     </path>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon icon--cart umg-icon"
-                    fill="currentColor">
+                <svg id="cart-trigger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                    class="icon icon--cart umg-icon" fill="currentColor">
                     <path
                         d="M24 0H0V48H24 76.1l60.3 316.5 3.7 19.5H160 488h24V336H488 179.9l-9.1-48H496L576 32H122l-2.4-12.5L115.9 0H96 24zM176 512c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm336-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48z">
                     </path>
@@ -132,15 +134,48 @@
 
             </div>
         </div>
+        <nav class="desktop-nav">
+            <a href="#tour">TOUR</a>
+            <a href="#merch">MERCH</a>
+            <a href="#album">ALBUMS</a>
+            <a href="#footer-social">MORE</a>
+            <a href="#">BOOK A TICKET</a>
+            <a href="privacy-policy.html">PRIVACY</a>
+            <a href="#" class="cookie-choices-trigger">COOKIE CHOICES</a>
+        </nav>
+    </div>
+    <div id="cart-container" class="cart-container">
+        <div class="cart-header">
 
+            <button id="close-cart-btn" class="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-content">
+            <h2>YOUR CART IS EMPTY</h2>
+            <p>Time to fill up the cart</p>
+            <a href="#merch" id="continue-shopping-btn" class="continue-shopping-btn">CONTINUE SHOPPING</a>
+        </div>
+    </div>
+    <div id="search-container" class="search-container">
+        <div class="search-bar">
+            <input type="text" placeholder="SEARCH" class="search-input">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 576 512">
+                <path fill="currentColor"
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L486.6 441.4 509.3 464 464 509.3l-22.6-22.6L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z">
+                </path>
+            </svg>
+        </div>
     </div>
     <div class="sidebar-menu" id="sidebarMenu">
         <div class="close-btn" id="closeSidebar">&times;</div>
         <ul>
-            <a href="#merch">SHOP</a>
-            <a href="#album">ALBUMS</a>
             <a href="#tour">TOUR</a>
+            <a href="#merch">MERCH</a>
+            <a href="#album">ALBUMS</a>
+
             <a href="#footer-social">MORE</a>
+            <a href="#">BOOK A TICKET</a>
+            <a href="privacy-policy.html">PRIVACY</a>
+            <a href="#" class="cookie-choices-trigger">COOKIE CHOICES</a>
 
         </ul>
         <script>
@@ -198,7 +233,7 @@
                     </div>
 
                     <section class="tour-slider-section" id="tour">
-                        <h2 class="tour-slider-title">Tour Dates</h2>
+                        <h2 class="tour-slider-title ">Tour Dates</h2>
                         <div class="tour-slider">
                             <div class="tour-slide active">
                                 <ul>
@@ -260,253 +295,307 @@
                 </div>
 
             </div>
-
-            <section class="merch-section" id="merch">
-                <h2 class="merch-title">SHOP THE TOUR COLLECTION</h2>
-                <div class="merch-list">
+    </div>
+    <section class="merch-section" id="merch">
+        <h2 class="merch-title">SHOP THE TOUR COLLECTION</h2>
+        <div class="swiper merch-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/merch/merch1.webp" alt="SHARK RAGLAN TEE">
                         <div class="merch-name">SHARK RAGLAN TEE</div>
                         <div class="merch-price">$45.00</div>
                     </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/merch/merch2.webp" alt="BILLIE PHOTO TOUR TEE">
                         <div class="merch-name">BILLIE PHOTO TOUR TEE</div>
                         <div class="merch-price">$45.00</div>
                     </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/merch/merch3.webp" alt="BILLIE YELLOW TOUR ZIP HOODIE">
                         <div class="merch-name">BILLIE YELLOW TOUR ZIP HOODIE</div>
                         <div class="merch-price">$110.00</div>
                     </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/merch/merch4.webp" alt="ALL OVER BILLIE TANK">
                         <div class="merch-name">ALL OVER BILLIE TANK</div>
                         <div class="merch-price">$45.00</div>
                     </div>
                 </div>
-            </section>
-            <section class="book-promo">
-                <h3>Book a ticket now</h3>
-                <button class="book-btn">
-                    book a ticket
-                </button>
-            </section>
-            <section class="merch-section" id="album">
-                <h2 class="merch-title">SHOP THE NEW ALBUM</h2>
-                <div class="merch-list">
+                <div class="swiper-slide">
+                    <div class="merch-item">
+                        <img src="assets/merch/merch5.webp" alt="DO YOU KNOW HOW TO BEND? Ringer Tee">
+                        <div class="merch-name">DO YOU KNOW HOW TO BEND? Ringer Tee</div>
+                        <div class="merch-price">$45.00</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="merch-item">
+                        <img src="assets/merch/merch6.webp" alt="Blohsh Die Cut Dogtag">
+                        <div class="merch-name">Blohsh Die Cut Dogtag</div>
+                        <div class="merch-price">$75.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <section class="book-promo">
+        <h3>Book a ticket now</h3>
+        <button class="book-btn">
+            book a ticket
+        </button>
+    </section>
+    <section class="merch-section" id="album">
+        <h2 class="merch-title">SHOP THE NEW ALBUM</h2>
+        <div class="swiper album-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/albums/album1.webp" alt="SHARK RAGLAN TEE">
                         <div class="merch-name">HIT ME HARD AND SOFT Anniversary Edition Vinyl</div>
                         <div class="merch-price">$33.00</div>
                     </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/albums/album2.webp" alt="BILLIE PHOTO TOUR TEE">
                         <div class="merch-name">BIRDS OF A FEATHER 7" Vinyl [Translucent Green]</div>
                         <div class="merch-price">$15.00</div>
                     </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/albums/album3.webp" alt="BILLIE YELLOW TOUR ZIP HOODIE">
                         <div class="merch-name">HIT ME HARD AND SOFT Standard Vinyl</div>
                         <div class="merch-price">$33.00</div>
                     </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="merch-item">
                         <img src="assets/albums/album4.webp" alt="ALL OVER BILLIE TANK">
                         <div class="merch-name">HIT ME HARD AND SOFT Standard CD</div>
                         <div class="merch-price">$14.00</div>
                     </div>
                 </div>
-            </section>
-        </main>
-        <main class="prefil">
-
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center prefil-product-category">
-                    <span class="text-wrapper clickable">Yeti Backpacks </span>
-                    <span class="fa fa-angle-right"></span>
-                    <span class="text-wrapper clickable">Yeti Crossroads 27L Backpack</span>
-                </div>
-                <div class="product-rating">
-                    <div class="product-rating__stars">
-                        <span class="stars">★★★★★</span>
+                <div class="swiper-slide">
+                    <div class="merch-item">
+                        <img src="assets/albums/album5.webp" alt="Anniversary Edition Vinyl">
+                        <div class="merch-name">HIT ME HARD AND SOFT Anniversary Edition Vinyl</div>
+                        <div class="merch-price">$33.00</div>
                     </div>
-                    <p href="#" class="product-rating__reviews">4.9 (6,207)</p>
-
                 </div>
-
-                <div class="product-labels">
-                    <span class="product-labels__badge product-labels__badge--bestseller">Exclusive</span>
-                    <span class="product-labels__badge product-labels__badge--discount">Limited offer</span>
-                </div>
-
-
-                <div class="prefil__container">
-                    <div class="item">
-                        <div class="prefil__label">
-                            <div class="product-name">
-                                <h4><span class="product-title"></span></h4>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="item">
-                        <div class="new-price text-left ">
-                            <p style="color: grey; font-weight: 400;">Limit 1 per order</p>
-                            <h2 class=""
-                                style="color: #000; font-weight: 600 !important; font-size: 40px; display: flex; align-items: center;  ">
-                                <span style="font-size: 24px; ">$</span>9 <span
-                                    style="font-size: 24px; margin-left: 2px;  ">95</span>
-                            </h2>
-                        </div>
-                        <div>
-                            <div class="price"> <span style="color: grey; font-weight: 400;">Was <s>$150.00</s></span>
-                            </div>
-                            <div class="price"> <span style="color: green; font-weight: 400;">Save $140.05 (94%)</span>
-                            </div>
-                        </div>
-
-                        <style>
-                            .form__group input,
-                            .form__group select {
-                                padding: 10px;
-                                background: #fafafa;
-                                height: 38px;
-                                color: black;
-                                border: 1px solid #ccc;
-                                border-radius: 3px;
-                                box-sizing: border-box;
-                                width: 100%;
-                                line-height: 1rem;
-                                font-size: 14px;
-                            }
-                        </style>
-
-                        <div class="form-container">
-                            <div style="margin-top: 0.5cm; margin-bottom: 0.2cm;"></div>
-                            <h2 class="form-container__title">Please complete your personal information:</h2>
-                            <form id="newForm" class="form">
-                                <div class="form__row">
-                                    <div class="form__group form__group__half">
-                                        <input type="text" id="first-name" class="form__input" placeholder=" " required>
-                                        <input type="hidden" id="red">
-                                        <label for="first-name" class="form__label">First Name</label>
-                                    </div>
-                                    <div class="form__group form__group__half">
-                                        <input type="text" id="last-name" class="form__input" placeholder=" " required>
-                                        <label for="last-name" class="form__label">Last Name</label>
-                                    </div>
-                                </div>
-
-                                <div class="form__group">
-                                    <input type="text" id="address" class="form__input" placeholder=" " required>
-                                    <label for="address" class="form__label">Address</label>
-                                </div>
-                                <div class="form__row">
-                                    <div class="form__group form__group__half">
-                                        <input type="text" id="postal-code" class="form__input" placeholder=" "
-                                            required>
-                                        <label for="postal-code" class="form__label">Postal Code</label>
-                                    </div>
-                                    <div class="form__group form__group__half">
-                                        <input type="text" id="city" class="form__input" placeholder=" " required>
-                                        <label for="city" class="form__label">City</label>
-                                    </div>
-                                </div>
-
-                                <div class="form__row">
-                                    <div class="form__group ">
-                                        <select class="form__input" required="" data-sharkid="__6">
-                                            <option value="" disabled="" selected=""></option>
-                                            <option value="AL">Alabama</option>
-                                            <option value="AK">Alaska</option>
-                                            <option value="AZ">Arizona</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="CA">California</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="HI">Hawaii</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="IL">Illinois</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="IA">Iowa</option>
-                                            <option value="KS">Kansas</option>
-                                            <option value="KY">Kentucky</option>
-                                            <option value="LA">Louisiana</option>
-                                            <option value="ME">Maine</option>
-                                            <option value="MD">Maryland</option>
-                                            <option value="MA">Massachusetts</option>
-                                            <option value="MI">Michigan</option>
-                                            <option value="MN">Minnesota</option>
-                                            <option value="MS">Mississippi</option>
-                                            <option value="MO">Missouri</option>
-                                            <option value="MT">Montana</option>
-                                            <option value="NE">Nebraska</option>
-                                            <option value="NV">Nevada</option>
-                                            <option value="NH">New Hampshire</option>
-                                            <option value="NJ">New Jersey</option>
-                                            <option value="NM">New Mexico</option>
-                                            <option value="NY">New York</option>
-                                            <option value="NC">North Carolina</option>
-                                            <option value="ND">North Dakota</option>
-                                            <option value="OH">Ohio</option>
-                                            <option value="OK">Oklahoma</option>
-                                            <option value="OR">Oregon</option>
-                                            <option value="PA">Pennsylvania</option>
-                                            <option value="RI">Rhode Island</option>
-                                            <option value="SC">South Carolina</option>
-                                            <option value="SD">South Dakota</option>
-                                            <option value="TN">Tennessee</option>
-                                            <option value="TX">Texas</option>
-                                            <option value="UT">Utah</option>
-                                            <option value="VT">Vermont</option>
-                                            <option value="VA">Virginia</option>
-                                            <option value="WA">Washington</option>
-                                            <option value="WV">West Virginia</option>
-                                            <option value="WI">Wisconsin</option>
-                                            <option value="WY">Wyoming</option>
-                                        </select>
-                                        <label for="state" class="form__label">State</label>
-                                    </div>
-                                </div>
-
-                                <div class="form__group focused">
-                                    <div class="iti iti--separate-dial-code iti--show-flags">
-                                        <input type="text" data-validate="phone" class="w100 iti__tel-input" id="ph"
-                                            pattern="\d{10,10}"
-                                            title="The phone number must contain 10 digits and cannot start with 0 (without the +1 prefix)."
-                                            name="sub10" autocomplete="tel-national" value="" required=""
-                                            style="padding-left: 70px;" data-intl-tel-input-id="0">
-                                        <input id="phone" type="hidden" name="fullPhone">
-                                    </div>
-                                    <input type="hidden" id="phone" name="phone" value="">
-                                </div>
-                                <div class="form__group">
-                                    <input type="email" id="email" class="form__input" placeholder=" " required>
-                                    <label for="email" class="form__label">Email</label>
-                                </div>
-
-                                <button type="submit" class="form__submit-btn">CONTINUE</button>
-                            </form>
-                        </div>
-
-                        <div class="badge">
-                            <div class="badge__title">TRUSTED SHOP</div>
-                            <div class="badge__subtitle">SECURE PAYMENT</div>
-                        </div>
-
-
-
+                <div class="swiper-slide">
+                    <div class="merch-item">
+                        <img src="assets/albums/album6.webp" alt="ISOLATED VOCALS BUNDLEE">
+                        <div class="merch-name">HIT ME HARD AND SOFT COVER TEE / ISOLATED VOCALS BUNDLE</div>
+                        <div class="merch-price">$75.00</div>
                     </div>
                 </div>
             </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    </main>
 
-        </main>
+    <main class="prefil">
+
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center prefil-product-category">
+                <span class="text-wrapper clickable">Yeti Backpacks </span>
+                <span class="fa fa-angle-right"></span>
+                <span class="text-wrapper clickable">Yeti Crossroads 27L Backpack</span>
+            </div>
+            <div class="product-rating">
+                <div class="product-rating__stars">
+                    <span class="stars">★★★★★</span>
+                </div>
+                <p href="#" class="product-rating__reviews">4.9 (6,207)</p>
+
+            </div>
+
+            <div class="product-labels">
+                <span class="product-labels__badge product-labels__badge--bestseller">Exclusive</span>
+                <span class="product-labels__badge product-labels__badge--discount">Limited offer</span>
+            </div>
+
+
+            <div class="prefil__container">
+                <div class="item">
+                    <div class="prefil__label">
+                        <div class="product-name">
+                            <h4><span class="product-title"></span></h4>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="item">
+                    <div class="new-price text-left ">
+                        <p style="color: grey; font-weight: 400;">Limit 1 per order</p>
+                        <h2 class=""
+                            style="color: #000; font-weight: 600 !important; font-size: 40px; display: flex; align-items: center;  ">
+                            <span style="font-size: 24px; ">$</span>9 <span
+                                style="font-size: 24px; margin-left: 2px;  ">95</span>
+                        </h2>
+                    </div>
+                    <div>
+                        <div class="price"> <span style="color: grey; font-weight: 400;">Was <s>$150.00</s></span>
+                        </div>
+                        <div class="price"> <span style="color: green; font-weight: 400;">Save $140.05 (94%)</span>
+                        </div>
+                    </div>
+
+                    <style>
+                        .form__group input,
+                        .form__group select {
+                            padding: 10px;
+                            background: #fafafa;
+                            height: 38px;
+                            color: black;
+                            border: 1px solid #ccc;
+                            border-radius: 3px;
+                            box-sizing: border-box;
+                            width: 100%;
+                            line-height: 1rem;
+                            font-size: 14px;
+                        }
+                    </style>
+
+                    <div class="form-container">
+                        <div style="margin-top: 0.5cm; margin-bottom: 0.2cm;"></div>
+                        <h2 class="form-container__title">Please complete your personal information:</h2>
+                        <form id="newForm" class="form">
+                            <div class="form__row">
+                                <div class="form__group form__group__half">
+                                    <input type="text" id="first-name" class="form__input" placeholder=" " required>
+                                    <input type="hidden" id="red">
+                                    <label for="first-name" class="form__label">First Name</label>
+                                </div>
+                                <div class="form__group form__group__half">
+                                    <input type="text" id="last-name" class="form__input" placeholder=" " required>
+                                    <label for="last-name" class="form__label">Last Name</label>
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                                <input type="text" id="address" class="form__input" placeholder=" " required>
+                                <label for="address" class="form__label">Address</label>
+                            </div>
+                            <div class="form__row">
+                                <div class="form__group form__group__half">
+                                    <input type="text" id="postal-code" class="form__input" placeholder=" " required>
+                                    <label for="postal-code" class="form__label">Postal Code</label>
+                                </div>
+                                <div class="form__group form__group__half">
+                                    <input type="text" id="city" class="form__input" placeholder=" " required>
+                                    <label for="city" class="form__label">City</label>
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group ">
+                                    <select class="form__input" required="" data-sharkid="__6">
+                                        <option value="" disabled="" selected=""></option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+                                    <label for="state" class="form__label">State</label>
+                                </div>
+                            </div>
+
+                            <div class="form__group focused">
+                                <div class="iti iti--separate-dial-code iti--show-flags">
+                                    <input type="text" data-validate="phone" class="w100 iti__tel-input" id="ph"
+                                        pattern="\d{10,10}"
+                                        title="The phone number must contain 10 digits and cannot start with 0 (without the +1 prefix)."
+                                        name="sub10" autocomplete="tel-national" value="" required=""
+                                        style="padding-left: 70px;" data-intl-tel-input-id="0">
+                                    <input id="phone" type="hidden" name="fullPhone">
+                                </div>
+                                <input type="hidden" id="phone" name="phone" value="">
+                            </div>
+                            <div class="form__group">
+                                <input type="email" id="email" class="form__input" placeholder=" " required>
+                                <label for="email" class="form__label">Email</label>
+                            </div>
+
+                            <button type="submit" class="form__submit-btn">CONTINUE</button>
+                        </form>
+                    </div>
+
+                    <div class="badge">
+                        <div class="badge__title">TRUSTED SHOP</div>
+                        <div class="badge__subtitle">SECURE PAYMENT</div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
     </div>
     <footer class="custom-footer">
         <div class="footer-content">
@@ -515,21 +604,15 @@
             </div>
             <div class="footer-links">
                 <div class="footer-links-col">
-                    <a href="#">MERCH</a>
-                    <a href="#">MUSIC</a>
-                    <a href="#">COLLECTIONS</a>
-                    <a href="#">BILLIE X NIKE</a>
-                    <a href="#">SUSTAINABILITY</a>
-                    <a href="#">TOUR</a>
-                    <a href="#">BILLIE'S KITCHEN</a>
-                    <a href="#">MORE</a>
+                    <a href="#tour">TOUR</a>
+                    <a href="#merch">MERCH</a>
+                    <a href="#album">ALBUMS</a>
+
+                    <a href="#footer-social">MORE</a>
                 </div>
                 <div class="footer-links-col">
-                    <a href="#">HELP & SUPPORT</a>
-                    <a href="#">TERMS</a>
-                    <a href="#">PRIVACY</a>
-                    <a href="#">DO NOT SELL MY PERSONAL INFORMATION</a>
-                    <a href="#">COOKIE CHOICES</a>
+                    <a href="privacy-policy.html">PRIVACY</a>
+                    <a href="#" class="cookie-choices-trigger">COOKIE CHOICES</a>
                 </div>
             </div>
         </div>
@@ -542,10 +625,57 @@
             <a href="https://open.spotify.com/artist/6qqNVTkY8uBg9cP3Jd7DAH"><i class="fab fa-spotify"></i></a>
         </div>
         <div class="footer-accessibility">
-            If you are using a screen reader and are having problems using this website, please call 866-682-4413 for
+            If you are using a screen reader and are having problems using this website, please call 888-555-0199 for
             assistance.
         </div>
     </footer>
+    <div id="cookie-popup-overlay" class="cookie-popup-overlay">
+        <div id="cookie-popup" class="cookie-popup">
+            <div class="cookie-popup-header">
+                <img src="assets/logo.webp" alt="Universal Music Group" style="filter: invert(1); height: 25px;">
+                <p>UNIVERSAL MUSIC GROUP</p>
+            </div>
+            <div class="cookie-popup-content">
+                <div class="cookie-section">
+                    <h3>Information We Collect About You</h3>
+                    <p>We want to be transparent about the data we and our partners collect and how we use it, so you
+                        can best exercise control over your personal data. For more information, please see our Privacy
+                        Policy.</p>
+                </div>
+                <div class="cookie-section">
+                    <h3>Information Our Partners Collect</h3>
+                    <p>We use cookies or other tracking technologies from the following partners. These are used to
+                        personalize your experience, connect with social networks, and tailor advertising to better
+                        match your interests. This may include tracking across our sites, sites operated by third
+                        parties, and multiple devices. For more information <a href="privacy-policy.html">Visit tracking
+                            technologies</a></p>
+                </div>
+                <div class="cookie-choices">
+                    <div class="choice-item">
+                        <input type="checkbox" id="essential" name="essential" checked disabled>
+                        <label for="essential">Essential</label>
+                    </div>
+                    <div class="choice-item">
+                        <input type="checkbox" id="functional" name="functional" checked>
+                        <label for="functional">Functional</label>
+                    </div>
+                    <div class="choice-item">
+                        <input type="checkbox" id="analytics" name="analytics" checked>
+                        <label for="analytics">Analytics</label>
+                    </div>
+                    <div class="choice-item">
+                        <input type="checkbox" id="advertising" name="advertising" checked>
+                        <label for="advertising">Advertising</label>
+                    </div>
+                </div>
+            </div>
+            <div class="cookie-popup-footer">
+                <button id="cookie-confirm-btn" class="cookie-confirm-btn">Confirm</button>
+                <a href="privacy-policy.html" class="cookie-privacy-link">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const phoneInput = document.querySelector("#ph");
@@ -852,24 +982,16 @@
     </script>
 
     <script src="js/script.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/cart.js"></script>
 
     <!-- Libary to detect county code and flag -->
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- End Libary to detect county code and flag -->
 
     <script>
-        const slides = document.querySelectorAll('.tour-slide');
-        const dots = document.querySelectorAll('.tour-slider-dots .dot');
-        let current = 0;
-        function showSlide(idx) {
-            slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-            current = idx;
-        }
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => showSlide(i));
-        });
         (function () {
             const slides = document.querySelectorAll('.tour-slide');
             const dots = document.querySelectorAll('.tour-slider-dots .dot');
@@ -878,10 +1000,30 @@
             let isDragging = false;
 
             function showSlide(idx) {
-                slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+                // Remove all classes from slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active', 'prev', 'next');
+                });
+
+                // Add appropriate classes based on position
+                slides.forEach((slide, i) => {
+                    if (i === idx) {
+                        slide.classList.add('active');
+                    } else if (i < idx) {
+                        slide.classList.add('prev');
+                    } else {
+                        slide.classList.add('next');
+                    }
+                });
+
+                // Update dots
                 dots.forEach((d, i) => d.classList.toggle('active', i === idx));
                 current = idx;
             }
+
+            // Initialize first slide
+            showSlide(0);
+
             dots.forEach((dot, i) => {
                 dot.addEventListener('click', () => showSlide(i));
             });
@@ -895,9 +1037,13 @@
             slider.addEventListener('touchmove', e => {
                 if (!isDragging) return;
                 let diff = e.touches[0].clientX - startX;
-                if (Math.abs(diff) > 50) {
-                    if (diff < 0 && current < slides.length - 1) showSlide(current + 1);
-                    if (diff > 0 && current > 0) showSlide(current - 1);
+                if (Math.abs(diff) > 80) {
+                    if (diff < 0 && current < slides.length - 1) {
+                        setTimeout(() => showSlide(current + 1), 50);
+                    }
+                    if (diff > 0 && current > 0) {
+                        setTimeout(() => showSlide(current - 1), 50);
+                    }
                     isDragging = false;
                 }
             });
@@ -912,18 +1058,128 @@
             slider.addEventListener('mousemove', e => {
                 if (!mouseDown) return;
                 let diff = e.clientX - mouseStart;
-                if (Math.abs(diff) > 50) {
-                    if (diff < 0 && current < slides.length - 1) showSlide(current + 1);
-                    if (diff > 0 && current > 0) showSlide(current - 1);
+                if (Math.abs(diff) > 80) {
+                    if (diff < 0 && current < slides.length - 1) {
+                        setTimeout(() => showSlide(current + 1), 50);
+                    }
+                    if (diff > 0 && current > 0) {
+                        setTimeout(() => showSlide(current - 1), 50);
+                    }
                     mouseDown = false;
                 }
             });
             slider.addEventListener('mouseup', () => { mouseDown = false; });
             slider.addEventListener('mouseleave', () => { mouseDown = false; });
+
+            // Встановлюємо висоту контейнера під найвищий слайд
+            function setSliderHeight() {
+                let maxH = 0;
+                slides.forEach(slide => {
+                    slide.style.height = 'auto';
+                    const h = slide.offsetHeight;
+                    if (h > maxH) maxH = h;
+                });
+                slider.style.height = maxH + 'px';
+            }
+            setSliderHeight();
+            window.addEventListener('resize', setSliderHeight);
         })();
+
+        const merchSlider = new Swiper('.merch-slider', {
+            loop: false,
+            pagination: {
+                el: '.merch-slider .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.merch-slider .swiper-button-next',
+                prevEl: '.merch-slider .swiper-button-prev',
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                500: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                }
+            }
+        });
+
+        const albumSlider = new Swiper('.album-slider', {
+            loop: false,
+            pagination: {
+                el: '.album-slider .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.album-slider .swiper-button-next',
+                prevEl: '.album-slider .swiper-button-prev',
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                500: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                }
+            }
+        });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cookieOverlay = document.getElementById('cookie-popup-overlay');
+            const cookieConfirmBtn = document.getElementById('cookie-confirm-btn');
+            const triggers = document.querySelectorAll('.cookie-choices-trigger');
 
+            const openCookiePopup = (e) => {
+                e.preventDefault();
+                if (cookieOverlay) cookieOverlay.classList.add('active');
+                const sidebarMenu = document.getElementById('sidebarMenu');
+                if (sidebarMenu && sidebarMenu.classList.contains('active')) {
+                    sidebarMenu.classList.remove('active');
+                }
+            };
+
+            const closeCookiePopup = () => {
+                if (cookieOverlay) cookieOverlay.classList.remove('active');
+            };
+
+            if (triggers.length > 0 && cookieOverlay && cookieConfirmBtn) {
+                triggers.forEach(trigger => {
+                    trigger.addEventListener('click', openCookiePopup);
+                });
+
+                cookieConfirmBtn.addEventListener('click', closeCookiePopup);
+
+                cookieOverlay.addEventListener('click', (e) => {
+                    if (e.target === cookieOverlay) {
+                        closeCookiePopup();
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 

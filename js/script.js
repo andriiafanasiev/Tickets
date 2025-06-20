@@ -5,33 +5,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const productTitles = document.querySelectorAll('.product-title');
 
     productTitles.forEach((productTitle) => {
-        productTitle.textContent = productName;
+        if (productTitle) {
+            productTitle.textContent = productName;
+        }
     });
 
     const brandTitles = document.querySelectorAll('.brand-title');
 
     brandTitles.forEach((brandTitle) => {
-        brandTitle.textContent = brandName;
+        if (brandTitle) {
+            brandTitle.textContent = brandName;
+        }
     });
 
     const storeNames = document.querySelectorAll('.store-name');
-    document.title = store;
+    if (document.title) {
+        document.title = store;
+    }
     storeNames.forEach((storeName) => {
-        storeName.textContent = store;
+        if (storeName) {
+            storeName.textContent = store;
+        }
     });
 
     const productPrices = document.querySelectorAll('.product-price');
 
     productPrices.forEach((productPriceElement) => {
-        productPriceElement.textContent = productPrice;
+        if (productPriceElement) {
+            productPriceElement.textContent = productPrice;
+        }
     });
 
     const date = new Date();
     const day = date.getDate();
     const month = date.toLocaleString(language, { month: 'long' });
 
-    document.querySelector('.js-info_day').textContent = day;
-    document.querySelector('.js-info_month').textContent = month;
+    const dayElement = document.querySelector('.js-info_day');
+    if (dayElement) {
+        dayElement.textContent = day;
+    }
+
+    const monthElement = document.querySelector('.js-info_month');
+    if (monthElement) {
+        monthElement.textContent = month;
+    }
 
     function showModalWithAnimation(modal) {
         overlay.classList.remove('overlay-hidden');
@@ -107,4 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         }
     });
+
+    const searchTrigger = document.getElementById('search-trigger');
+    const searchContainer = document.getElementById('search-container');
+    const closeSearchBtn = document.getElementById('close-search-btn');
+
+    if (searchTrigger && searchContainer && closeSearchBtn) {
+        searchTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchContainer.classList.toggle('active');
+        });
+
+        closeSearchBtn.addEventListener('click', () => {
+            searchContainer.classList.remove('active');
+        });
+    }
 });

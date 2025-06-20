@@ -41,41 +41,7 @@
     }
 }
 
-/* Оформлення стрілок */
-.swiper-button-prev,
-.swiper-button-next {
-    width: 40px;
-    /* Менший розмір */
-    height: 40px;
-    background: rgba(255, 255, 255, 0.6);
-    /* Напівпрозорий білий фон */
-    border-radius: 50%;
-    /* Круглі кнопки */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-/* Колір і розмір стрілок */
-.swiper-button-prev::after,
-.swiper-button-next::after {
-    font-size: 18px;
-    /* Менший розмір іконки */
-    font-weight: bold;
-    color: black;
-    /* Чорний колір */
-}
-
-/* При наведенні – збільшуємо прозорість */
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.swiper-pagination-bullet-active-green {
-    background-color: var(--color-primary) !important;
-    opacity: 1 !important;
-}
 
 
 /* Головне зображення */
