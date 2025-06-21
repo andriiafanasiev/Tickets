@@ -9,6 +9,7 @@
     <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="css/tickets.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -385,7 +386,7 @@
                     <section class="tickets-section">
                         <h2>Tickets</h2>
                         <div class="onsale-item">
-                            <span>General Onsale</span>
+                            <span>Booking a ticket for the fan zone</span>
                         </div>
 
                         <h3>Select an event:</h3>
@@ -403,10 +404,8 @@
                     </section>
                     <section class="info-section">
                         <h2>Info</h2>
-                        <p>Curfew: 23:00</p>
-                        <p>Age Restrictions</p>
-                        <p>Standing: 16+</p>
-                        <p>Seated: Under 15s must be accompanied by an adult aged over 18.</p>
+                        <p>The cost to reserve a ticket for the fan zone is - $10</p>
+                        <p>The balance of the ticket price is $70 (payable 2 weeks before the concert)</p>
                     </section>
 
                     <section class="lineup-section">
@@ -1155,13 +1154,25 @@
             const tourDates = [];
             const dateElements = document.querySelectorAll('.tour-slider .tour-slide ul li');
 
-            dateElements.forEach(item => {
+            // Dummy venues, as this data is not in the original list
+            const venues = [
+                "OVO Hydro", "OVO Hydro", "The O2", "The O2", "The O2", "The O2", "The O2", "The O2",
+                "Co-op Live", "Co-op Live", "Co-op Live", "Co-op Live", "3Arena", "3Arena", "Ariake Arena",
+                "Ariake Arena", "Kaseya Center", "Kaseya Center", "Kaseya Center", "Amway Center",
+                "PNC Arena", "PNC Arena", "Spectrum Center", "Spectrum Center", "Wells Fargo Center",
+                "UBS Arena", "UBS Arena", "Smoothie King Center", "Smoothie King Center", "BOK Center",
+                "BOK Center", "Moody Center", "Moody Center", "Footprint Center", "Footprint Center",
+                "Chase Center", "Chase Center"
+            ];
+
+            dateElements.forEach((item, index) => {
                 const text = item.innerText;
                 const parts = text.split(' - ');
                 if (parts.length === 2) {
                     tourDates.push({
                         date: parts[0].replace('<b>', '').replace('</b>', '').trim(),
-                        city: parts[1].trim().split(',')[0]
+                        city: parts[1].trim().split(',')[0],
+                        venue: venues[index] || "Arena" // Fallback
                     });
                 }
             });
@@ -1182,7 +1193,6 @@
                     return;
                 }
 
-                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
                 const dayOfMonth = ('0' + date.getDate()).slice(-2);
                 const month = date.toLocaleDateString('en-US', { month: 'short' });
 
@@ -1193,12 +1203,12 @@
                 const statusHtml = '<div class="status fan-zone">Fan Zone</div>';
 
                 card.innerHTML = `
-                <div class="day-of-week">${dayOfWeek}</div>
-                <div class="day-of-month">${dayOfMonth}</div>
-                <div class="month">${month}</div>
-                <div class="city">${tourDate.city}</div>
-                ${statusHtml}
-            `;
+                    <div class="day-of-month">${dayOfMonth}</div>
+                    <div class="month">${month}</div>
+                    <div class="city">${tourDate.city}</div>
+                    <div class="venue">${tourDate.venue}</div>
+                    ${statusHtml}
+                `;
                 datesContainer.appendChild(card);
             });
 
@@ -1206,19 +1216,49 @@
             const nextBtn = document.getElementById('next-date-btn');
             const datesWrapper = document.querySelector('.dates-wrapper');
 
+            // --- Swipe/Drag Functionality ---
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let isDragged = false;
+
+            if (datesWrapper) {
+                datesWrapper.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    isDragged = false;
+                    datesWrapper.classList.add('active');
+                    startX = e.pageX - datesWrapper.offsetLeft;
+                    scrollLeft = datesWrapper.scrollLeft;
+                });
+                datesWrapper.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    datesWrapper.classList.remove('active');
+                });
+                datesWrapper.addEventListener('mouseup', () => {
+                    isDown = false;
+                    datesWrapper.classList.remove('active');
+                    setTimeout(() => { isDragged = false; }, 0);
+                });
+                datesWrapper.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    isDragged = true;
+                    e.preventDefault();
+                    const x = e.pageX - datesWrapper.offsetLeft;
+                    const walk = (x - startX) * 2; //scroll-fast
+                    datesWrapper.scrollLeft = scrollLeft - walk;
+                });
+            }
+            // --- End Swipe/Drag ---
+
+
             const updateArrowVisibility = () => {
                 if (!datesWrapper || !prevBtn || !nextBtn) return;
-                // Use requestAnimationFrame to avoid layout thrashing
                 requestAnimationFrame(() => {
-                    const scrollLeft = datesWrapper.scrollLeft;
-                    const scrollWidth = datesWrapper.scrollWidth;
-                    const clientWidth = datesWrapper.clientWidth;
+                    const currentScroll = datesWrapper.scrollLeft;
+                    const maxScroll = datesWrapper.scrollWidth - datesWrapper.clientWidth;
 
-                    prevBtn.style.display = scrollLeft > 0 ? 'flex' : 'none';
-
-                    // Add a 1px tolerance for floating point inaccuracies
-                    const isAtEnd = scrollWidth - scrollLeft - clientWidth < 1;
-                    nextBtn.style.display = isAtEnd ? 'none' : 'flex';
+                    prevBtn.style.display = currentScroll > 1 ? 'flex' : 'none';
+                    nextBtn.style.display = currentScroll < maxScroll - 1 ? 'flex' : 'none';
                 });
             };
 
@@ -1236,7 +1276,6 @@
                 datesWrapper.addEventListener('scroll', updateArrowVisibility);
                 window.addEventListener('resize', updateArrowVisibility);
 
-                // Use MutationObserver to detect when cards are added and update arrows
                 const observer = new MutationObserver(updateArrowVisibility);
                 observer.observe(datesContainer, { childList: true });
             }
@@ -1245,6 +1284,8 @@
             const dateCards = document.querySelectorAll('.date-card');
             dateCards.forEach(card => {
                 card.addEventListener('click', () => {
+                    if (isDragged) return;
+
                     dateCards.forEach(c => c.classList.remove('active'));
                     card.classList.add('active');
 
@@ -1257,6 +1298,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>

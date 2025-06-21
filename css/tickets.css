@@ -1,0 +1,231 @@
+.tickets-section {
+	margin-top: 20px;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	color: #000;
+}
+
+.tickets-section h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.onsale-item {
+	background-color: #f0f0f0;
+	padding: 15px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.tickets-section h3 {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.alternative-dates-slider {
+	position: relative;
+}
+
+.dates-wrapper {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	cursor: grab;
+}
+
+.dates-wrapper.active {
+	cursor: grabbing;
+}
+
+.dates-wrapper::-webkit-scrollbar {
+	display: none;
+}
+
+.dates-container {
+	display: flex;
+	gap: 10px;
+	padding-bottom: 10px;
+}
+
+.date-card {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 10px;
+	text-align: center;
+	min-width: 100px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	flex-shrink: 0;
+	background-color: #fff;
+}
+
+.date-card.active,
+.date-card:hover {
+	border-color: #000;
+}
+
+.date-card .day-of-month {
+	font-size: 32px;
+	font-weight: bold;
+	margin: 0;
+}
+
+.date-card .month {
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.date-card .city {
+	font-size: 14px;
+	margin-top: 8px;
+}
+
+.date-card .venue {
+	font-size: 11px;
+	color: #555;
+	margin-top: 4px;
+}
+
+.date-card .status {
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 8px;
+}
+
+.date-card .fan-zone {
+	color: #d90000;
+	font-weight: bold;
+}
+
+.slider-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	cursor: pointer;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.slider-arrow.next-arrow {
+	right: -10px;
+}
+
+.slider-arrow.prev-arrow {
+	left: -10px;
+}
+
+.info-section,
+.lineup-section {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	margin-top: 20px;
+	color: #000;
+}
+
+.info-section h2,
+.lineup-section h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.info-section p {
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.lineup-section h3 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.artist-card {
+	display: flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 10px;
+	text-decoration: none;
+	color: inherit;
+	margin-bottom: 15px;
+	transition: background-color 0.2s ease;
+}
+
+.artist-card:hover {
+	background-color: #f9f9f9;
+}
+
+.artist-card img {
+	width: 60px;
+	height: 60px;
+	border-radius: 4px;
+	object-fit: cover;
+	margin-right: 15px;
+}
+
+.artist-card span {
+	font-weight: bold;
+	flex-grow: 1;
+}
+
+.artist-card i {
+	color: #d90000;
+}
+
+@media (max-width: 767px) {
+	.date-card {
+		min-width: 80px;
+		padding: 8px;
+	}
+
+	.date-card .day-of-month {
+		font-size: 24px;
+	}
+
+	.date-card .month {
+		font-size: 11px;
+	}
+
+	.date-card .city {
+		font-size: 12px;
+		margin-top: 5px;
+	}
+
+	.date-card .venue {
+		font-size: 9px;
+	}
+
+	.date-card .status {
+		font-size: 10px;
+		margin-top: 5px;
+	}
+
+	.slider-arrow {
+		width: 25px;
+		height: 25px;
+		font-size: 16px;
+	}
+
+	.slider-arrow.next-arrow {
+		right: -5px;
+	}
+
+	.slider-arrow.prev-arrow {
+		left: -5px;
+	}
+}
